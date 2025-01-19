@@ -90,7 +90,7 @@ This experimental result is based on the MSE of the random split on the DAVIS da
 Refer to the "Multi-View Integration" figure below.
 
 ![multi-view_integration](./imgs/multi-view_integration.png)
-
+The scenario order follows the sequence described in Section 3.1, "DT Mixup Pair Sampling," of the paper.
 
 ## Model-agnostic experiment
 The model-agnostic experiments include the simplest model, [DeepDTA](https://github.com/hkmztrk/DeepDTA)[3].  
