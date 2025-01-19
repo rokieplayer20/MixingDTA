@@ -100,6 +100,7 @@ This is available in the DeepDTA directory, and the input command is identical t
 ## etc
 The version of ESM-3 we used is `esm3-open-small` with 1.4B parameters.  
 It is the smallest and fastest model in the ESM-3 family.  
+esm3-open-small are provided under the [Cambrian non-commercial license](https://www.evolutionaryscale.ai/policies/cambrian-non-commercial-license-agreement).
 
 <!--
 ## Licenses
