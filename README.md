@@ -1,6 +1,7 @@
 # MixingDTA
 This GitHub repository provides the source code for the MixingDTA[1]. It is intended for academic purposes.
 
+⚠️ Built with ESM
 
 ## Abstract
 
@@ -72,7 +73,7 @@ For academic details on protein embeddings, refer to [2].
 
 ### Google Drive
 
-Trained parameters of MixingDTA are given in
+Due to storage constraints, only the trained parameters for the DeepDTA version of MixingDTA are provided.
 
 ```
 https://drive.google.com/drive/folders/1rdclHh9DeYL3rcoGP-73cGx2MOn95BLO?usp=drive_link
@@ -113,7 +114,7 @@ If you intend to train on the PDBbind_Refined dataset, do not use scenarios 4 an
 This step is "Multi-View integration".
 
 ```
-python ./main.py --device ${YOUR_GPU_NUM} --play integration --dataset ${DAVIS_OR_KIBA}
+python ./main.py --device ${YOUR_GPU_NUM} --play integration --dataset ${Dataset_name}
 
 ```
 Including cases progressively from the first perspective up to the sixth leads to improved performance in terms of MSE.  
