@@ -13,6 +13,8 @@ import os
 
 from sklearn import metrics
 
+# The functions for getting AUPR are from https://github.com/zhaolongNCU/PocketDTA/blob/main/utils_dta.py
+
 def get_aupr_davis(Y, P):
     Y = np.where(Y >= 7, 1, 0)
     P = np.where(P >= 7, 1, 0)

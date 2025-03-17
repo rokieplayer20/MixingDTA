@@ -2,6 +2,25 @@
 This GitHub repository provides the source code for the MixingDTA[1]. It is intended for academic purposes.
 
 
+## Abstract
+
+Drug–Target Affinity (DTA) prediction is an important regression task for drug discovery, which can provide richer
+information than traditional drug-target interaction prediction as a binary prediction task. To achieve accurate DTA
+prediction, quite large amount of data is required for each drug, which is not available as of now. Thus, data scarcity
+and sparsity is a major challenge. Another important task is ‘cold-start’ DTA prediction for unseen drug or protein. In
+this work, we introduce MixingDTA, a novel framework to tackle data scarcity by incorporating domain-specific pre-
+trained language models for molecules and proteins with our MEETA (MolFormer and ESM-based Efficient aggregation
+Transformer for Affinity) model. We further address the label sparsity and cold-start challenges through a novel data
+augmentation strategy named GBA-Mixup, which interpolates embeddings of neighboring entities based on the Guilt-By-
+Association (GBA) principle, to improve prediction accuracy even in sparse regions of DTA space. Our experiments on
+benchmark datasets demonstrate that the MEETA backbone alone provides up to a 19% improvement of mean squared
+error over current state-of-the-art baseline, and the addition of GBA-Mixup contributes a further 8.4% improvement.
+Importantly, GBA-Mixup is model-agnostic, delivering performance gains across all tested backbone models of up to
+16.9%. Case studies shows how MixingDTA interpolates between drugs and targets in the embedding space, demonstrating
+generalizability for unseen drug–target pairs while effectively focusing on functionally critical residues. These results
+highlight MixingDTA’s potential to accelerate drug discovery by offering accurate, scalable, and biologically informed
+DTA predictions. 
+
 
 ## Overview of MixingDTA
 
@@ -64,19 +83,29 @@ Move to the directory of MEETA, the default backbone model of MixingDTA.
 ```
 
 
-python ./main.py --device ${YOUR_GPU_NUM} --case 1 --dataset ${DAVIS_OR_KIBA}
+python ./main.py --device ${YOUR_GPU_NUM} --case 1 --dataset ${Dataset_name}
 
-python ./main.py --device ${YOUR_GPU_NUM} --case 2 --dataset ${DAVIS_OR_KIBA}
+python ./main.py --device ${YOUR_GPU_NUM} --case 2 --dataset ${Dataset_name}
 
-python ./main.py --device ${YOUR_GPU_NUM} --case 3 --dataset ${DAVIS_OR_KIBA}
+python ./main.py --device ${YOUR_GPU_NUM} --case 3 --dataset ${Dataset_name}
 
-python ./main.py --device ${YOUR_GPU_NUM} --case 4 --dataset ${DAVIS_OR_KIBA}
+python ./main.py --device ${YOUR_GPU_NUM} --case 4 --dataset ${Dataset_name}
 
-python ./main.py --device ${YOUR_GPU_NUM} --case 5 --dataset ${DAVIS_OR_KIBA}
+python ./main.py --device ${YOUR_GPU_NUM} --case 5 --dataset ${Dataset_name}
 
-python ./main.py --device ${YOUR_GPU_NUM} --case 6 --dataset ${DAVIS_OR_KIBA}
+python ./main.py --device ${YOUR_GPU_NUM} --case 6 --dataset ${Dataset_name}
 
 ```
+
+Dataset_name is one among "DAVIS, KIBA, BindingDB_Kd, PDBbind_Refined".
+If you intend to train on the PDBbind_Refined dataset, do not use scenarios 4 and 5 for training.
+
+
+This PDBbind_Refined was obtained from 'https://github.com/MahaThafar/Affinity2Vec/blob/main/PDBBind_Refined/All_PDBbind_info.csv' and subsequently reprocessed by me.
+
+
+The remaining datasets were obtained from TDC and processed.
+(https://tdcommons.ai/multi_pred_tasks/dti/)
 
 ### Step 2: Meta-Predictor Training
 This step is "Multi-View integration".
@@ -140,3 +169,4 @@ Meanwhile, MolFormer was used to extract embeddings via the Hugging Face API. Re
   publisher={Oxford University Press}
 }
 ```
+

@@ -62,7 +62,8 @@ def make_from_ESM3(prot, device):
     return ret_dict
 
 
-datasets = ['DAVIS', 'KIBA']
+datasets = ['DAVIS', 'KIBA', 'BindingDB_Kd','PDBbind_Refined']
+
 
 for dataset in datasets:
     

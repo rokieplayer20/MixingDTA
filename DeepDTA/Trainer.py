@@ -391,12 +391,14 @@ class WorkStation:
         pearson_corr, pearson_p_value = pearsonr(Y, P)
         spearman_corr, spearman_p_value = spearmanr(Y, P)
         
+        
+        
         if self.config.dataset == 'DAVIS':
             AUPR = get_aupr_davis(Y, P)
         elif self.config.dataset == 'KIBA':
             AUPR = get_aupr_kiba(Y,P)
         else:
-            raise Exception("No dataset")
+            AUPR = 0
         
         
         
@@ -690,12 +692,15 @@ class WorkStation:
         pearson_corr, pearson_p_value = pearsonr(Y, P)
         spearman_corr, spearman_p_value = spearmanr(Y, P)
         
+        
+        
         if self.config.dataset == 'DAVIS':
             AUPR = get_aupr_davis(Y, P)
         elif self.config.dataset == 'KIBA':
             AUPR = get_aupr_kiba(Y,P)
         else:
-            raise Exception("No dataset")
+            AUPR = 0
+            
         
         
         scores['MSE'] = MSE

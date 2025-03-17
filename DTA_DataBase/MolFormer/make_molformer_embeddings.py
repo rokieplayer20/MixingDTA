@@ -19,7 +19,8 @@ molformer_tokenizer = AutoTokenizer.from_pretrained(molformer_version, trust_rem
 
 
 
-datasets = ['DAVIS', 'KIBA']
+datasets = ['DAVIS', 'KIBA', 'BindingDB_Kd','PDBbind_Refined']
+
 
 for dataset in datasets:
     
