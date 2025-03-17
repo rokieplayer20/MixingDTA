@@ -27,6 +27,9 @@ DTA predictions.
 ![MixingDTA](./imgs/MixingDTA.png)
 Overview of MixingDTA; a. Two DT pairs are input, and the mixing ratio is sampled from a Beta distribution for training like C-Mixup; b. The default backbone model of MixingDTA is MEETA. It utilizes embeddings from pretrained language models. Cross-AFA efficiently processes through AFA from a computational cost perspective; c. Edges between DT pairs are connected based on the criteria for defining neighbors. Neighbors with similar labels are closer, following the C-Mixup method. For each view, new nodes are augmented between DT nodes, creating mixed embeddings that are then trained; d. This is a step of multi-view integration. The embeddings are extracted from encoders trained on each GBA scenario and fed into the FC layers of MEETA.
 
+⚠️ The term `reversed` used in the code is equivalent to `Complement` as described in the paper.
+ 
+
 ## Prerequisites for running MixingDTA
 
 ```
@@ -48,7 +51,10 @@ For more detailed environment configuration, refer to `requirements.txt`.
 
 ## Processing datasets
 
-The DAVIS and KIBA datasets were downloaded from [TDC](https://tdcommons.ai/multi_pred_tasks/dti) and processed. They are provided in the `DTA_DataBase` directory of this GitHub repository as pickle files, pre-split for 5-fold cross-validation.
+The DAVIS and KIBA and BindingDB_Kd datasets were downloaded from [TDC](https://tdcommons.ai/multi_pred_tasks/dti) and processed. They are provided in the `DTA_DataBase` directory of this GitHub repository as pickle files, pre-split for 5-fold cross-validation.
+This PDBbind_Refined was obtained from 'https://github.com/MahaThafar/Affinity2Vec/blob/main/PDBBind_Refined/All_PDBbind_info.csv' and subsequently reprocessed by me.
+
+
 
 ### Extract embeddings from Pre-trained LMs
 The embeddings corresponding to Drug SMILES and protein sequences are extracted from pretrained models. The code for extraction is made available. `drug_ids.pkl` and `protein_ids.pkl` serve as inputs for these codes. They are in dictionary format, where the keys are IDs and the values are strings.
@@ -66,7 +72,7 @@ For academic details on protein embeddings, refer to [2].
 
 ### Google Drive
 
-mask_matrix and trained parameters of MixingDTA are given in
+Trained parameters of MixingDTA are given in
 
 ```
 https://drive.google.com/drive/folders/1rdclHh9DeYL3rcoGP-73cGx2MOn95BLO?usp=drive_link
@@ -101,11 +107,7 @@ Dataset_name is one among "DAVIS, KIBA, BindingDB_Kd, PDBbind_Refined".
 If you intend to train on the PDBbind_Refined dataset, do not use scenarios 4 and 5 for training.
 
 
-This PDBbind_Refined was obtained from 'https://github.com/MahaThafar/Affinity2Vec/blob/main/PDBBind_Refined/All_PDBbind_info.csv' and subsequently reprocessed by me.
 
-
-The remaining datasets were obtained from TDC and processed.
-(https://tdcommons.ai/multi_pred_tasks/dti/)
 
 ### Step 2: Meta-Predictor Training
 This step is "Multi-View integration".
