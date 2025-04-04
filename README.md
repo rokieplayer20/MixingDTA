@@ -43,7 +43,7 @@ pip install esm # for ESM-3 open small version
 pip install ipykernel
 pip install PyTDC==1.0.7
 pip install easydict
-pip install lifelines==0.27.3
+pip install lifelines==0.29.0
 pip install scikit-learn==1.2.2
 conda install -c conda-forge rdkit=2023.9.6
 ```
